@@ -3,7 +3,7 @@ dotenv.config({path:"./config/.env"})
 process.on("uncaughtException", (err) => {
   console.log(err);
 });
-import cors from 'cors'
+import * as cors from 'cors'
 import express from "express";
 import { dbcon } from "./database/dbconnection.js";
 import jwt from "jsonwebtoken";
@@ -15,7 +15,7 @@ import { globalError } from "./src/middleware/globalError.js";
 const app = express();
 const port = process.env.PORT||4000;
 const corsOptions ={
-  origin: 'http://localhost:3000',  // Your React app's URL
+  origin: '*',  // Your React app's URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers
   credentials: true, 
