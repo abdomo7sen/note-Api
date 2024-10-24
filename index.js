@@ -13,10 +13,11 @@ import User from "./database/models/user.model.js";
 import { AppError } from "./src/utils/appError.js";
 import { globalError } from "./src/middleware/globalError.js";
 const app = express();
-const port = process.env.PORT||3000;
+const port = process.env.PORT||4000;
 const corsOptions ={
   origin: 'http://localhost:3000',  // Your React app's URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers
   credentials: true, 
 }
 app.use(cors(corsOptions));
