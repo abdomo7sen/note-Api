@@ -14,8 +14,13 @@ import { AppError } from "./src/utils/appError.js";
 import { globalError } from "./src/middleware/globalError.js";
 const app = express();
 const port = process.env.PORT||3000;
-
-app.use(cors({origin:'*'}));
+const corsOptions ={
+  origin: 'http://localhost:3000',  // Your React app's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed methods
+  credentials: true, 
+}
+app.use(cors(corsOptions));
+app.options('*', cors())
 app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/notes", noteRouter);
